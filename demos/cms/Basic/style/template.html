@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta id="MetaDescription" name="description" content="<%=description%>">
+<meta id="MetaKeywords" name="keywords" content="<%=keywords%>">
+<meta id="MetaAuthor" name="author" content="<%=author%>">
+<meta name="RESOURCE-TYPE" content="DOCUMENT" />
+<meta name="DISTRIBUTION" content="GLOBAL" />
+<meta id="MetaRobots" name="ROBOTS" content="INDEX, FOLLOW" />
+<meta id="MetaGenerator" name="GENERATOR" content="JavaXT" />
+<meta id="MetaCopyright" name="COPYRIGHT" content="<%=copyright%>, <%=author%>" />
+
+<title><%=title%></title>
+<link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico" />
+
+
+<!-- Directives for Mobile -->
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0" />
+
+
+
+
+<!-- Style for this website -->
+<link rel="stylesheet" type="text/css" href="/style/template.css" />
+
+
+
+</head>
+<body>
+
+<table class="outerDiv">
+  <tr>
+    <td style="vertical-align:top; height:100%">
+
+
+      <div class="mainDiv">
+        <table style="width:100%; height:100%;">
+          <tr>
+            <td class="header">
+
+
+              <a href="/">
+                <div class="header-logo">JavaXT</div>
+              </a>
+
+
+              <div class="tabbar">
+
+                <div class="menu-button-container">
+                  <div class="menu-button-icon"></div>
+                </div>
+
+                <input type="checkbox" class="menu-button">
+
+                <div class="tabs">
+                  <%=tabs%>
+                </div>
+
+              </div>
+
+
+              <!--
+              <div class="navbar">
+                <%=breadcrumbs%>
+              </div>
+              -->
+
+            </td>
+          </tr>
+          <tr>
+
+            <td class="content">
+              <div style="height:100%">
+                <%=content%>
+              </div>
+            </td>
+
+          </tr>
+        </table>
+      </div>
+
+
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div class="footer">
+        <div class="copyright">Copyright &copy; <%=year%></div>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+
+<!-- The following scripts are completely optional -->
+<script src="/javascript/javaxt/javaxt-webcontrols.js"></script>
+<script src="/javascript/javaxt/javaxt-express.js"></script>
+<script src="/style/template.js"></script>
+<script>
+
+  //If javascript is enabled, the following function will be called after the
+  //page has been loaded. See "template.js" for more details.
+    var init = function() {
+
+
+      //Update the website into a dynamic web application
+        initWebSite();
+
+
+      //Watch for changes made on the server and automatically refresh the browser
+        initAutoRefresh();
+
+
+      //IMPORTANT: Delete this script after its been run!
+        window.removeEventListener("load", init);
+        init = null;
+
+    };
+
+    window.addEventListener("load", init);
+
+</script>
+
+</body>
+</html>

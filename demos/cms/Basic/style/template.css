@@ -1,0 +1,610 @@
+/**************************************************************************/
+/** General
+/**************************************************************************/
+
+html, body {
+    width:100%;
+    height:100%;
+    margin:0;
+}
+
+
+body, td, th, p, span {
+    color: #333;
+    font: 14px/20px helvetica,arial,sans-serif;
+
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    background-color: #fff;
+    overflow-y: scroll;
+}
+
+
+p {
+    margin-top:0px;
+    margin-bottom:10px;
+}
+
+a {
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+
+a, a:visited {
+    color:#3366cc;
+}
+
+a:hover {
+    color:#ff3300;
+    text-decoration:none;
+}
+
+
+h1, h2, h3,
+h2 a, h2 a:visited
+{
+    font-family: avenir-lt-w01_35-light1475496,sans-serif;
+    font-weight: normal;
+    margin-left: 0px;
+    margin-right: 0px;
+    color: #003366;
+    white-space: nowrap;
+}
+
+h1 {
+    font-size: 36px;
+    margin-top: 12px;
+    margin-bottom: 10px;
+    padding-bottom: 14px;
+    padding-left:0px;
+    border-bottom: 1px solid #003366;
+}
+
+h2, h2 a, h2 a:visited, h2 a:hover {
+    font-size: 25px;
+    margin-top: 45px;
+    margin-bottom: 3px;
+    text-decoration:none;
+    padding: 10px 0 15px 0px;
+}
+
+h3 {
+    font-size: 16pt;
+    margin-top: 15px;
+    margin-bottom: 3px;
+    padding-bottom: 3px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+img, td{
+    padding:0px;
+}
+
+
+:focus-visible {
+    outline: none;
+}
+
+
+/**************************************************************************/
+/** Variables
+/**************************************************************************/
+
+:root {
+  --header-height: 90px;
+}
+
+
+/**************************************************************************/
+/** Container
+/**************************************************************************/
+
+.outerDiv {
+    width:100%;
+    text-align:center;
+    height: 100%;
+}
+
+
+.mainDiv {
+    width: 100%;
+    height:100%;
+    background-color: #fff;
+}
+
+
+
+/**************************************************************************/
+/** Header
+/**************************************************************************/
+
+.header {
+    height: var(--header-height);
+    background-color: #F7E5D2;
+    border-bottom: 3px solid #cdb8a2;
+}
+
+.header-logo {
+    display: inline-block;
+    float: left;
+    height: 90px;
+    line-height: 90px;
+    font-family: 'Lucida Sans Unicode', sans-serif;
+    color: #757C72;
+    font-size: 36px;
+    padding-left: 110px;
+
+    background-image: url("https://d3irm7757ljrvw.cloudfront.net/website/images/logos/javaxt-header-logo.png");
+    background-repeat: no-repeat;
+    background-position-x: 8px;
+}
+
+
+
+/**************************************************************************/
+/** Menu Button
+/**************************************************************************/
+
+.menu-button {
+    width: 53px;
+    height: 53px;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    opacity: 0;
+}
+
+
+.menu-button-container {
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+  top: 43px;
+}
+
+
+.menu-button-icon,
+.menu-button-icon::before,
+.menu-button-icon::after {
+  display: block;
+  background-color: #757c72;
+  position: absolute;
+  height: 3px;
+  width: 30px;
+  transition: transform 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  border-radius: 2px;
+}
+
+.menu-button-icon::before {
+  content: '';
+  margin-top: -10px;
+}
+
+.menu-button-icon::after {
+  content: '';
+  margin-top: 10px;
+}
+
+
+
+/**************************************************************************/
+/** Tabs
+/**************************************************************************/
+
+.tabbar {
+    display: inline-block;
+    float: right;
+    position: relative;
+    overflow: hidden;
+}
+
+.tabbar input{
+    cursor: pointer;
+}
+
+.tabs {
+
+}
+
+.tabs div {
+    display: inline-block;
+    padding: 35px 35px 0;
+    font-size: 14px;
+}
+
+.tabs div:hover,
+.tabs div:focus{
+
+}
+
+.tabs div.active {
+
+}
+
+.tabs a,
+.tabs a:hover,
+.tabs a:focus {
+    color: #220f05;
+}
+
+.tabs div.active:after,
+.tabs div:after{
+  content: '';
+  position: relative;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 0px;
+  right: 0;
+  background: #757c72;
+  transition: width .15s ease;
+  -webkit-transition: width .15s ease;
+}
+
+.tabs div.active:after{
+    width: 100%;
+}
+
+.tabs div:hover, .tabs div:active, .tabs div:focus{
+    opacity: 1.0;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+    outline: 0 none;
+}
+
+.tabs div:hover:after{
+  width: 100%;
+  left: 0;
+  opacity: 0.6;
+}
+
+
+
+/**************************************************************************/
+/** Navbar
+/**************************************************************************/
+
+.navbar {
+    background-color: #f7f7f7;
+    height: 24px;
+    text-align: left;
+    border-top: 4px solid #E0E0E0;
+    border-bottom: 1px solid #E0E0E0;
+    line-height: 24px;
+    color: #0056b3;
+    cursor: default;
+}
+
+.navbar > div {
+    display: inline-block;
+    float: left;
+    padding: 0;
+    opacity: 0.85;
+}
+
+.navbar > div:before {
+    content:'/';
+    padding: 0 5px 0 5px;
+}
+
+.navbar > div:first-child:before {
+    content:'';
+    padding: 12px;
+}
+
+.navbar > div:hover {
+   cursor: pointer;
+   text-decoration:none;
+   color: #ff3300;
+}
+
+.navbar > div:last-child {
+    color: #4a5568;
+}
+
+.navbar > div:last-child:hover {
+   cursor: default;
+   text-decoration:none;
+   color: #4a5568;
+}
+
+
+
+/**************************************************************************/
+/** Content
+/**************************************************************************/
+
+.content {
+    padding: 15px 12px 30px;
+    text-align: left;
+    height:100%;
+    vertical-align: top;
+    width: 100%;
+}
+
+.content b, .content strong,
+.content b a, .content b a:visited{
+    color: #003366;
+}
+
+.content b a:hover{
+   color:#FF3300;text-decoration:none;
+}
+
+.content li a, .content li a:visited{
+    text-decoration:none;
+}
+
+.content ol{
+    margin-left:20px;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+}
+
+.content ol li {
+   padding-top:5px;
+}
+
+.content ul{
+    margin-left:0px;
+    margin-top:0px;
+    margin-bottom:0px;
+    padding:0px;
+    list-style-type: none;
+}
+
+.content ul ul {
+    padding-left:20px;
+}
+
+.content ul li {
+    background-image: url('../images/sprite.gif');
+    background-position: -258px 0px;
+    background-repeat: no-repeat;
+    padding-left: 18px;
+    line-height:160%;
+}
+
+
+/**************************************************************************/
+/** Footer
+/**************************************************************************/
+
+.footer{
+    position:relative;
+}
+
+.copyright {
+
+
+
+    color: #545454;
+
+    text-align: center;
+    padding: 10px 0 5px 0;
+    width: 100%;
+
+
+    background-color: #eeefee; /*gray*/
+}
+
+
+
+
+/**************************************************************************/
+/** Resize Elements
+/**************************************************************************/
+/** The following logic is applied once the client screen increases to a
+ *  minimum width.
+ */
+
+
+@media (min-width:1px)  {
+
+
+  /*
+   * Hide tabs and show menu button
+   */
+    .tabs {
+        display: none;
+    }
+
+    .menu-button, .menu-button-container {
+        display: block;
+    }
+
+
+
+  /*
+   * Update tab style for mobile
+   */
+    .tabbar {
+        overflow: initial;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+
+    .tabs {
+
+        position: absolute;
+        background: #ededed;
+
+        /* Hide the menu off-screen to the left */
+        right: -100%;
+        -webkit-transition: right 0.3s ease;
+        -o-transition: left 0.3s ease;
+        transition: right 0.3s ease;
+        top: var(--header-height);
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        overflow-x: hidden;
+        width: 0px;
+    }
+
+    .tabs div {
+        padding: 0 30px;
+        font-size: 22px;
+        width: 100%;
+        background: #000;
+        line-height: 50px;
+        height: 50px;
+        border: 1px solid #777;
+        color: #fff;
+        text-align: left;
+    }
+
+    .tabs div.active {
+        background: #757575;
+    }
+
+    .tabs div.active:after,
+    .tabs div:after{
+        height: 0px;
+    }
+
+    .tabs div:hover{
+        background: #4f4f4f;
+    }
+
+    /*
+     * Slide the menu in from left when the input is checked
+     */
+    .tabbar input:checked ~ .tabs {
+        right: 0;
+        width: 100%;
+        height: calc(100% - var(--header-height));
+        background-color: #4a4a4a;
+        z-index: 2;
+    }
+
+}
+
+@media (min-width:620px) { /* Adjust width to fit tabs */
+
+  /*
+   * Show tabs and hide menu button
+   */
+    .tabs {
+        display: block;
+    }
+
+    .menu-button, .menu-button-container {
+        display: none;
+    }
+
+
+  /*
+   * Reset everything that was changed above, when min-size = 1
+   */
+    .tabbar {
+        float: right;
+        position: relative;
+        overflow: initial;
+        width: initial;
+        height: initial;
+    }
+
+    .tabs {
+        width: initial;
+        overflow: initial;
+        position: initial;
+        height: initial;
+        background: initial;
+    }
+
+    .tabs div {
+        display: inline-block;
+        padding: 35px 35px 0;
+        font-size: 14px;
+
+        background: none;
+
+        width: initial;
+
+        line-height: initial;
+        height: initial;
+        border: none;
+        color: initial;
+        text-align: initial;
+
+    }
+
+    .tabs div.active {
+        background: none;
+    }
+
+    .tabs div.active:after,
+    .tabs div:after{
+        height: 2px;
+    }
+
+    .tabs div:hover{
+        background: none;
+    }
+
+    .tabbar input:checked ~ .tabs {
+        background-color: initial;
+    }
+
+}
+
+
+
+@media (min-width:1281px) {
+    .content{
+        padding: 15px 35px 30px 35px;
+    }
+}
+
+
+@media (min-width:1921px) {
+
+    .outerDiv {
+        height: auto;
+    }
+
+    .mainDiv {
+        width: 1920px;
+        display: inline-block;
+        background-color: #ffffff;
+        -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+        -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+        box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    }
+
+    .content{
+        padding: 15px 35px 30px 35px;
+
+    }
+
+    .footer{
+        height: 32px;
+    }
+    .copyright{
+        background-color: transparent;
+    }
+
+    .overflowDiv {
+        padding-bottom:0;
+    }
+
+    body {
+        background: #dddddd url('../images/back_gry.gif');
+    }
+
+}
+

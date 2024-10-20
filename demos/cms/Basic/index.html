@@ -1,0 +1,68 @@
+<title>Express CMS Demo</title>
+
+<h1>Welcome!</h1>
+<p>
+The JavaXT Express CMS is a simple web server built using
+<a href="http://www.javaxt.com/" target="_blank">JavaXT</a>.
+It is intended to help developers to get a web server up and running quickly.
+If you're reading this page, you're well on your way!
+</p>
+
+<p>
+This demo has several cool features:
+</p>
+<ul>
+  <li>Live updates</li>
+  <li>Efficient page fetching</li>
+  <li>Automated versioning of js and css files for proper caching</li>
+  <li>Fail-safe fallback for browsers that don't have javascript enabled</li>
+</ul>
+
+
+<h2>How to customize this site?</h2>
+<p>
+Now that you have your server up, you are ready to start adding content by
+adding or editing files in the "Basic" CMS demo directory.
+</p>
+
+
+
+
+<p>
+The CMS relies on a template file (e.g. "template.html") found in the "style" folder
+that defines the general look and feel of the website.
+</p>
+
+<p>
+Content for individual pages are separated into individual text files (e.g. *.txt or *.html files).
+These text files contain html snippits that are injected into the template at runtime.
+</p>
+
+<p>
+You can start by editing one of the html files in the "Basic" demo directory (e.g. index.html).
+</p>
+
+<p>
+Note that you do not have to restart the server to see the changes.
+If you have JavaScript enabled, the website will refresh automatically.
+Otherwise, all you have to do is refresh the browser.
+
+</p>
+
+<h2>Tabs</h2>
+
+
+<p>
+You can add and remove tabs by updating the tabs.txt file. Note that the
+tab file has a &lt;%=Path&gt; tag. This tag will be replaced with a relative path
+to the root directory. This is handy when hosting/supporting subsites. There are
+many similar tags. You can learn more <a href="/wiki/known_tags/">here</a>.
+</p>
+
+
+<h2>Additional Information</h2>
+
+<a target="_blank" href=
+ "https://www.javaxt.com/javaxt-express/express/cms/">
+  https://www.javaxt.com/javaxt-express/express/cms/
+</a>
