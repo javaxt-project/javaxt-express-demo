@@ -29,10 +29,15 @@ public class Main {
         if (args.containsKey("-version")){
             printVersion();
         }
-        else if (args.containsKey("-cms")){
-            startCMS(args);
+        else if (args.containsKey("-start")){
+            String start = args.get("-start");
+            if (start.equalsIgnoreCase("CMS")){
+                startCMS(args);
+            }
+            else if (start.equalsIgnoreCase("React")){
+                startReact(args);
+            }
         }
-
     }
 
 
@@ -61,20 +66,20 @@ public class Main {
 
 
       //Get path to the CMS directory
-        var cmsDemo = args.get("-cms");
+        var cmsDemo = args.get("-demo");
         var demoDir = new Directory(getDemoDir() + "cms");
         var cmsDir = new Directory(demoDir + cmsDemo);
         if (!cmsDir.exists()) cmsDir = new Directory(cmsDemo);
         if (!cmsDir.exists()){
-            System.out.println("Invalid -cms option. Valid options include:");
+            System.out.println("Invalid -demo option. Valid options include:");
             for (Object obj : demoDir.getChildren()){
                 if (obj instanceof Directory){
                     Directory d = (Directory) obj;
-                    System.out.println("   -cms " + d.getName());
+                    System.out.println("   -demo " + d.getName());
                 }
             }
             System.out.println("Alternatively, you can provide a fully " +
-            "qualified path to a CMS directory using the -cms argument.");
+            "qualified path to a CMS directory using the -demo argument.");
             return;
         }
 
@@ -84,6 +89,14 @@ public class Main {
 
     }
 
+
+  //**************************************************************************
+  //** startReact
+  //**************************************************************************
+    private static void startReact(HashMap<String, String> args){
+        var demoDir = new Directory(args.get("-dir"));
+        React.start(demoDir, args);
+    }
 
 
   //**************************************************************************
