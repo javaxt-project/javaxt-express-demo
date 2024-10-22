@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicLong;
 import javaxt.io.Directory;
 import javaxt.http.servlet.*;
 import javaxt.http.websocket.*;
-import static javaxt.utils.Console.console;
+import static javaxt.demo.express.Utils.*;
 
 
 //******************************************************************************
@@ -149,13 +149,7 @@ public class CMS {
 
 
       //Start web server
-        int port = 9080;
-        try{ port = Integer.parseInt(args.get("-port")); }catch(Exception e){}
-        int numThreads = 250;
-        new javaxt.http.Server(port, numThreads, servlet).start();
-
-
-        System.out.println("Started server!");
+        startServer(args, servlet);
     }
 
 }

@@ -2,7 +2,7 @@ package javaxt.demo.express;
 
 import java.util.*;
 import javaxt.io.Directory;
-import static javaxt.utils.Console.console;
+import static javaxt.utils.Console.*;
 
 //******************************************************************************
 //**  Main
@@ -20,8 +20,8 @@ public class Main {
   //**************************************************************************
   /** Command line interface
    */
-    public static void main(String[] arguments) {
-        HashMap<String, String> args = console.parseArgs(arguments);
+    public static void main(String[] arguments) throws Exception {
+        HashMap<String, String> args = parseArgs(arguments);
 
 
 
@@ -30,11 +30,15 @@ public class Main {
             printVersion();
         }
         else if (args.containsKey("-start")){
-            String start = args.get("-start");
-            if (start.equalsIgnoreCase("CMS")){
+            String start = args.get("-start").toLowerCase();
+
+            if (start.equals("cms")){
                 startCMS(args);
             }
-            else if (start.equalsIgnoreCase("React")){
+            else if (start.equals("webservices")){
+                startWebServices(args);
+            }
+            else if (start.equals("react")){
                 startReact(args);
             }
         }
@@ -62,7 +66,7 @@ public class Main {
   //**************************************************************************
   //** startCMS
   //**************************************************************************
-    private static void startCMS(HashMap<String, String> args){
+    private static void startCMS(HashMap<String, String> args) throws Exception {
 
 
       //Get path to the CMS directory
@@ -91,9 +95,36 @@ public class Main {
 
 
   //**************************************************************************
+  //** startWebServices
+  //**************************************************************************
+    private static void startWebServices(HashMap<String, String> args) throws Exception {
+
+        var persistanceDemo = args.get("-demo");
+        var demoDir = new Directory(getDemoDir() + "webservices");
+        var dir = new Directory(demoDir + persistanceDemo);
+        if (!dir.exists()){
+            System.out.println("Invalid -demo option. Valid options include:");
+            for (Object obj : demoDir.getChildren()){
+                if (obj instanceof Directory){
+                    Directory d = (Directory) obj;
+                    System.out.println("   -demo " + d.getName());
+                }
+            }
+            System.out.println("Alternatively, you can provide a fully " +
+            "qualified path to a persistance directory using the -demo argument.");
+            return;
+        }
+
+
+      //Start the Persistence server
+        WebServices.start(dir, args);
+    }
+
+
+  //**************************************************************************
   //** startReact
   //**************************************************************************
-    private static void startReact(HashMap<String, String> args){
+    private static void startReact(HashMap<String, String> args) throws Exception {
         var demoDir = new Directory(args.get("-dir"));
         React.start(demoDir, args);
     }

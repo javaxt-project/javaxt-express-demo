@@ -20,4 +20,6 @@ manifest.mf
 **/!README.TXT
 
 
+**/database.*.db
+
 __pycache__/

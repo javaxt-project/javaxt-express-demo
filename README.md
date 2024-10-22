@@ -16,13 +16,14 @@ demo folders.
 
 ## Demos
 
-- CMS
-- CRUD
-- React
-
 ### CMS Demo
 ```
 java -jar dist/express-demo.jar -start cms -demo Basic
+```
+
+### WebServices Demo
+```
+ java -jar dist/express-demo.jar -start webservices -demo CarSales
 ```
 
 ### React Demo

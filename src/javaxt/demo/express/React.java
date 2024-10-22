@@ -3,6 +3,16 @@ package javaxt.demo.express;
 import java.util.*;
 import javaxt.io.Directory;
 import javaxt.http.servlet.*;
+import static javaxt.demo.express.Utils.*;
+
+
+//******************************************************************************
+//**  React Demo
+//******************************************************************************
+/**
+ *   Used to run React-related demos and scripts
+ *
+ ******************************************************************************/
 
 public class React {
 
@@ -17,6 +27,11 @@ public class React {
     }
 
 
+  //**************************************************************************
+  //** routerDemo
+  //**************************************************************************
+  /** Used to host a ReactJS app with routing.
+   */
     private static void routerDemo(Directory demoDir, HashMap<String, String> args){
 
 
@@ -47,6 +62,7 @@ public class React {
                     file = fileManager.getFile("index.html");
                 }
 
+
               //Send response
                 if (file==null || !file.exists()){
                     response.sendError(404);
@@ -59,11 +75,7 @@ public class React {
 
 
 
-
       //Start web server
-        int port = 9080;
-        try{ port = Integer.parseInt(args.get("-port")); }catch(Exception e){}
-        int numThreads = 250;
-        new javaxt.http.Server(port, numThreads, servlet).start();
+        startServer(args, servlet);
     }
 }
