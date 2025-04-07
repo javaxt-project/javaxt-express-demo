@@ -42,7 +42,7 @@
       <dependency>
         <groupId>javaxt</groupId>
         <artifactId>javaxt-express</artifactId>
-        <version>1.5.0</version>
+        <version>1.5.2</version>
       </dependency>
 
       <!-- Nashorn -->
@@ -110,6 +110,7 @@
         <!-- Create manifest -->
         <plugin>
           <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.2</version>
           <configuration>
             <archive>
               <manifest>
@@ -124,7 +125,6 @@
 
         <!-- Move jar to the dist directory -->
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
           <version>1.8</version>
           <executions>
@@ -200,7 +200,7 @@
                     todir="${project.basedir}/demos/cms/Basic/javascript/javaxt"
                   />
 
-                  
+
                 </target>
               </configuration>
               <goals>
