@@ -1,6 +1,7 @@
 package javaxt.demo.express;
 
 import java.util.HashMap;
+import static javaxt.utils.Console.*;
 import javaxt.http.servlet.HttpServlet;
 
 public class Utils {
@@ -12,13 +13,10 @@ public class Utils {
   /** Used to start a web server
    */
     public static void startServer(HashMap<String, String> args, HttpServlet servlet){
-
-        int port = 9080;
-        try{ port = Integer.parseInt(args.get("-port")); }catch(Exception e){}
+        Integer port = getValue(args, "-port", "-p").toInteger();
+        if (port==null) port = 9080;
         int numThreads = 250;
         new javaxt.http.Server(port, numThreads, servlet).start();
-
-        System.out.println("Started server!");
     }
 
 }
