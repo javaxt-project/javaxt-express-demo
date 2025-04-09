@@ -8,8 +8,8 @@
 
     <properties>
       <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <maven.compiler.source>17</maven.compiler.source>
-      <maven.compiler.target>17</maven.compiler.target>
+      <maven.compiler.source>11</maven.compiler.source>
+      <maven.compiler.target>11</maven.compiler.target>
       <!--<exec.mainClass>javaxt.demo.express.JavaxtExpressDemo</exec.mainClass>-->
 
       <!-- Ant-style directory layout -->
@@ -144,32 +144,16 @@
               </goals>
             </execution>
 
-            <!--
-            <execution>
-              <id>download-webcontrols</id>
-              <phase>install</phase>
-              <configuration>
-                <target>
-                  <get
-                    src="http://javaxt.com/webcontrols.js"
-                    dest="${project.basedir}/downloads/javaxt/javaxt-webcontrols.js"
-                    verbose="false"
-                    usetimestamp="true"
-                    skipexisting="true"
-                  />
-                </target>
-              </configuration>
-              <goals>
-                <goal>run</goal>
-              </goals>
-            </execution>
-            -->
 
+            <!-- Download JavaXT javascript releases -->
             <execution>
               <id>download-javaxt</id>
               <phase>install</phase>
               <configuration>
                 <target>
+
+                  <!-- Create downloads folder -->
+                  <mkdir dir="${project.basedir}/downloads/javaxt"/>
 
                   <!-- Download javaxt-webcontrols -->
                   <get
@@ -201,6 +185,13 @@
                   />
 
 
+                  <!-- Copy files to the auth demos -->
+                  <copy
+                    file="${project.basedir}/downloads/javaxt/javaxt-webcontrols.js"
+                    todir="${project.basedir}/demos/auth/basic/javascript/javaxt"
+                  />
+
+
                 </target>
               </configuration>
               <goals>
@@ -213,6 +204,31 @@
           </executions>
         </plugin>
 
+
+        <!-- Delete downloaded files on clean -->
+        <plugin>
+          <artifactId>maven-clean-plugin</artifactId>
+          <version>3.4.0</version>
+          <executions>
+            <execution>
+              <id>delete-downloads</id>
+              <phase>clean</phase>
+              <goals>
+                <goal>clean</goal>
+              </goals>
+              <configuration>
+                <filesets>
+                  <fileset>
+                    <directory>${project.basedir}/downloads/javaxt</directory>
+                  </fileset>
+                  <fileset>
+                    <directory>${project.basedir}/demos/cms/Basic/javascript/javaxt</directory>
+                  </fileset>
+                </filesets>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
 
       </plugins>
     </build>
