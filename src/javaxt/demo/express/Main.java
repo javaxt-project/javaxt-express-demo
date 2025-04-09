@@ -41,6 +41,15 @@ public class Main {
             else if (start.equals("react")){
                 startReact(args);
             }
+            else if (start.equals("webapp") || start.equals("app")){
+                startWebApp(args);
+            }
+            else{
+                System.out.println("Unknown/unsupported -start value. Given \"" + start + "\"");
+            }
+        }
+        else{
+            System.out.println("Please provide a valid -start command.");
         }
     }
 
@@ -129,6 +138,20 @@ public class Main {
         React.start(demoDir, args);
     }
 
+
+  //**************************************************************************
+  //** startWebApp
+  //**************************************************************************
+    private static void startWebApp(HashMap<String, String> args) throws Exception {
+        var demo = args.get("-demo");
+        if (Auth.hasDemo(demo)){
+            Auth.start(getDemoDir(), args);
+        }
+        else{
+            System.out.println("Unknown/unsupported -demo value. Given \"" + demo + "\"");
+        }
+    }
+    
 
   //**************************************************************************
   //** getDemoDir
