@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loading...</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script src="javascript/javaxt/javaxt-webcontrols.js"></script>
+<link href="style/landing.css" rel="stylesheet" />
+</head>
+<body>
+
+<script>
+window.onload = function() {
+
+    javaxt.dhtml.utils.updateDOM();
+
+
+    javaxt.dhtml.utils.get("whoami", {
+        success: function(text, xml, url, request){
+
+            request.abort();
+            request = null;
+
+            location.replace("welcome.html");
+
+        },
+        failure: function(){
+            location.replace("login.html");
+        }
+    });
+
+};
+</script>
+</body>
+</html>

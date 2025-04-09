@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loading...</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link href="style/shared.css" rel="stylesheet" />
+<link href="style/welcome.css" rel="stylesheet" />
+
+<script src="javascript/javaxt/javaxt-webcontrols.js"></script>
+
+</head>
+<body>
+
+<div class="welcome-container" style="display:none;">
+    <div class="title">Welcome</div>
+    <div>You have successfully logged into the app.</div>
+    <div><a>Click here</a> to logout.</div>
+</div>
+
+
+<script>
+window.onload = function() {
+
+    javaxt.dhtml.utils.updateDOM();
+
+
+    javaxt.dhtml.utils.get("whoami", {
+        success: function(text, xml, url, request){
+
+            document.title = "Welcome!";
+
+
+          //Show welcome message
+            var div = document.getElementsByClassName("welcome-container")[0];
+            var fx = new javaxt.dhtml.Effects();
+            fx.fadeIn(div, "easeIn", 500);
+
+
+          //Add onclick listener to the logoff link
+            var link = div.getElementsByTagName("a")[0];
+            link.onclick = function(){
+                fx.fadeOut(div, "easeOut", 500);
+                var auth = new javaxt.dhtml.Authentication("login", "logout");
+                auth.logoff(function(){
+                    location.replace("index.html");
+                });
+            };
+
+        },
+        failure: function(){
+            location.replace("login.html");
+        }
+    });
+
+};
+</script>
+</body>
+</html>
