@@ -1,3 +1,158 @@
+
+
+/**************************************************************************/
+/** Welcome container
+/**************************************************************************/
+
     .welcome-container {
+        width: 350px;
+        height: 400px;
+        background: #e6e6e8;
+    }
+
+    .welcome-container, .welcome-container input, .welcome-container a {
+        font-family: 'Open Sans',sans-serif;
+        font-size: 16px;
+        color: #A8ABAA;
+    }
+
+
+
+@media (min-width:641px)  {
+
+    .welcome-container {
+        box-shadow: 0 12px 14px 0 rgba(0, 0, 0, 0.2), 0 13px 20px 0 rgba(0, 0, 0, 0.2);
+        width: 456px;
+        height: 525px;
+        padding: 20px 72px 0 72px;
+        border-radius: 5px;
+        background-color: #ecedee;
+    }
+
+}
+
+
+/**************************************************************************/
+/** Welcome Header
+/**************************************************************************/
+
+    .welcome-header {
 
     }
+
+    @media (min-height: 481px)  {
+
+
+        .welcome-header {
+            font-family: 'Arizonia', cursive;
+            margin: -20px 0 25px 0;
+            /*background: url(../images/logo-100.png) no-repeat;*/
+            width: 600px;
+            height: 144px;
+            margin-left: -72px;
+            border-radius: 5px 5px 0 0;
+            background-position-x: 130px;
+            background-color: #637a87;
+            color: #fff;
+            background-position-y: 30px;
+            background-position-x: 60px;
+        }
+        .welcome-header:after {
+            content: "Login Success!";
+            margin-left: 116px;
+            display: inline-block;
+            float: left;
+            font-size: 70px;
+            white-space: nowrap;
+            color: #fff;
+            margin-top: 37px;
+            text-shadow: 0px 3px 5px rgba(9,57,88,0.72);
+        }
+
+    }
+
+
+/**************************************************************************/
+/** Welcom Screen
+/**************************************************************************/
+.welcome-screen {
+    background-image: url("../images/confetti.jpg");
+    height: 265px;
+    background-size: contain;
+    border-radius: 8px;
+    position: relative;
+    border: 1px solid #ddd;
+}
+
+
+.welcome-text {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 10px;
+    color: #808080;
+}
+
+
+
+
+/**************************************************************************/
+/** Submit inputs
+/**************************************************************************/
+
+
+    .login-form input[type="submit"]{
+        border: none;
+        padding: 0;
+        -webkit-appearance: none;
+    }
+
+
+
+
+
+    .login-form input[type="submit"] {
+        background-color: rgba(255,144,21,1);
+        color: #e2f4ff;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        font-size: 16px;
+        text-transform: uppercase;
+        font-weight: bold;
+        height: 53px;
+        width: 100%;
+        cursor: pointer;
+        border-radius: 8px;
+        -webkit-transition: background-color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1), color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: background-color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1), color 0.8s cubic-bezier(0.39, 0.575, 0.565, 1);
+        -webkit-transform: scaleY(0.9);
+        transform: scaleY(0.9);
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 53%);
+    }
+
+
+@media (min-width:641px)  {
+
+
+    .login-form input[type="submit"]{
+        font-size: 20px;
+    }
+
+
+    .login-form input[type="submit"] {
+        height: 70px;
+        background-color: #74a1bb;
+    }
+}
+
+
+    .login-form input[type="submit"]:hover,
+    .login-form input[type="submit"]:focus {
+        background-color: #e7963c;
+        color: #fefefe;
+        -webkit-transition: background-color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1), color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+        transition: background-color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1), color 0.2s cubic-bezier(0.39, 0.575, 0.565, 1);
+    }
+
+

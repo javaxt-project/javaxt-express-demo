@@ -10,3 +10,32 @@ html, body {
 body {
     background-color: #46565f;
 }
+
+.middle {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.center {
+    /*margin: 0 auto;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.noselect, .javaxt-noselect {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+}
+
+select:focus, textarea:focus, input:focus{
+    outline:0;
+}

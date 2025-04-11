@@ -1,10 +1,6 @@
 
 
 
-select:focus, textarea:focus, input:focus{
-    outline:0;
-}
-
 /**************************************************************************/
 /** Placeholder text
 /**************************************************************************/
@@ -43,7 +39,7 @@ select:focus, textarea:focus, input:focus{
     }
 
     .login-container, .login-container input, .login-container a {
-        font-family: 'Open Sans','Abel', sans-serif;
+        font-family: 'Open Sans',sans-serif;
         font-size: 16px;
         color: #A8ABAA;
     }
@@ -68,17 +64,17 @@ select:focus, textarea:focus, input:focus{
 /** Login logo
 /**************************************************************************/
 
-    .login-logo {
+    .login-header {
 
     }
 
     @media (min-height: 481px)  {
 
 
-        .login-logo {
+        .login-header {
             font-family: 'Arizonia', cursive;
             margin: -20px 0 56px 0;
-            background: url(../images/logo-100.png) no-repeat;
+            /*background: url(../images/logo-100.png) no-repeat;*/
             width: 600px;
             height: 144px;
             margin-left: -72px;
@@ -89,9 +85,9 @@ select:focus, textarea:focus, input:focus{
             background-position-y: 30px;
             background-position-x: 60px;
         }
-        .login-logo:after {
-            content: "Alexandria";
-            margin-left: 164px;
+        .login-header:after {
+            content: "Auth Demo";
+            margin-left: 138px;
             display: inline-block;
             float: left;
             font-size: 70px;
