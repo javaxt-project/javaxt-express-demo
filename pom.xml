@@ -59,6 +59,13 @@
         <version>2.2.224</version>
       </dependency>
 
+      <!-- Mail -->
+      <dependency>
+        <groupId>com.sun.mail</groupId>
+        <artifactId>jakarta.mail</artifactId>
+        <version>2.0.1</version>
+      </dependency>
+
     </dependencies>
 
 
@@ -190,7 +197,10 @@
                     file="${project.basedir}/downloads/javaxt/javaxt-webcontrols.js"
                     todir="${project.basedir}/demos/auth/basic/javascript/javaxt"
                   />
-
+                  <copy
+                    file="${project.basedir}/downloads/javaxt/javaxt-webcontrols.js"
+                    todir="${project.basedir}/demos/auth/email/javascript/javaxt"
+                  />
 
                 </target>
               </configuration>
@@ -223,6 +233,12 @@
                   </fileset>
                   <fileset>
                     <directory>${project.basedir}/demos/cms/Basic/javascript/javaxt</directory>
+                  </fileset>
+                  <fileset>
+                    <directory>${project.basedir}/demos/auth/basic/javascript/javaxt</directory>
+                  </fileset>
+                  <fileset>
+                    <directory>${project.basedir}/demos/auth/email/javascript/javaxt</directory>
                   </fileset>
                 </filesets>
               </configuration>
