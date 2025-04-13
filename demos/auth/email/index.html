@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<script src="javascript/javaxt/javaxt-webcontrols.js"></script>
+<script src="javascript/login.js"></script>
+
+<link href="style/login.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="middle center">
+  <div class="login-form">
+
+      <div style="display:none;">
+        <div class="title">Sign in</div>
+        <input type="text" placeholder="Email" autocomplete="off">
+        <input type="button" value="Next">
+      </div>
+
+
+      <div style="display:none;">
+        <div class="title">Enter code</div>
+        <input type="text" placeholder="Enter 6 digit code here" autocomplete="off">
+        <input type="button" value="Next">
+      </div>
+
+      <div style="display:none;">
+         <div class="title">Success!</div>
+         <div class="welcome-text">You have successfully logged into the app.
+         Click on the button below to logout and return to the login screen.
+         </div>
+         <input type="button" value="Sign Out">
+      </div>
+
+  </div>
+</div>
+
+<script>
+window.onload = function() {
+
+    javaxt.dhtml.utils.updateDOM();
+
+    var auth = new javaxt.dhtml.Authentication("login", "logout");
+
+          //Get login form
+            var loginForm = document.getElementsByClassName("login-form")[0];
+
+    javaxt.dhtml.utils.get("whoami", {
+        success: function(text, xml, url, request){
+
+            request.abort();
+            request = null;
+
+            var lastDiv;
+            for (var i=0; i<loginForm.childNodes.length; i++){
+                var div = loginForm.childNodes[i];
+                if (div.nodeType===1) lastDiv = div;
+            }
+
+            lastDiv.style.display="";
+            var button = lastDiv.getElementsByTagName("input")[0];
+            button.onclick = function(){
+                auth.logoff(function(){
+                    location.reload();
+                });
+            };
+
+        },
+        failure: function(){
+
+
+            var email, accessCode;
+
+
+          //Remove panels from the login form. Don't worry! We'll add them back...
+            var divs = [];
+            while (loginForm.childNodes.length>0){
+                var div = loginForm.removeChild(loginForm.childNodes[0]);
+                if (div.nodeType===1) divs.push(div);
+            }
+
+
+          //Instantiate carousel control
+            var carousel = new javaxt.dhtml.Carousel(loginForm,{
+                loop: false,
+                animate: true
+            });
+
+
+          //Add panels to the carousel control
+            divs.forEach((div)=>{
+                carousel.add(div);
+                div.style.display = "";
+            });
+
+
+          //Map form elements in each panel
+            var panels = carousel.getPanels();
+            panels.forEach((panel)=>{
+                var form = {};
+                var formElements = panel.div.getElementsByTagName("input");
+                for (var i=0; i<formElements.length; i++){
+                    var input = formElements[i];
+                    form[input.type] = input;
+                }
+                panel.form = form;
+            });
+
+
+          //Add logic to the first panel
+            panels[0].form.button.onclick = function(){
+                var button = this;
+                var input = panels[0].form.text;
+                email = input.value;
+
+
+                javaxt.dhtml.utils.post("/sendCode", email, {
+                    success: function(){
+                        carousel.next();
+                    },
+                    failure: function(){
+
+                    }
+                });
+            };
+
+
+          //Add logic to the second panel
+            panels[1].form.button.onclick = function(){
+                var button = this;
+                var input = panels[1].form.text;
+                accessCode = input.value;
+
+                auth.login(email, accessCode, function(){
+                    var response = this;
+                    if (response.status==200){
+                        carousel.next();
+                    }
+                    else{
+                        //onFailure(response);
+                    }
+                });
+            };
+
+
+          //Add logic to the third panel
+            panels[2].form.button.onclick = function(){
+                auth.logoff(function(){
+                    carousel.back();
+                    carousel.back();
+                });
+            };
+        }
+    });
+
+};
+</script>
+</body>
+</html>
