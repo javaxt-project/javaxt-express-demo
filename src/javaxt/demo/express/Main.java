@@ -134,7 +134,39 @@ public class Main {
   //** startReact
   //**************************************************************************
     private static void startReact(HashMap<String, String> args) throws Exception {
-        var demoDir = new Directory(args.get("-dir"));
+
+        Directory demoDir = null;
+        
+        var demo = args.get("-demo");
+        if (demo!=null){
+            for (Directory d : new Directory(getDemoDir() + "react").getSubDirectories()){
+                if (d.getName().equalsIgnoreCase(demo)){
+                    demoDir = d;
+                    break;
+                }
+            }
+            if (demoDir==null){
+                System.out.println("Unknown/unsupported -demo value. Given \"" + demo + "\"");
+                return;
+            }
+        }
+
+        if (demoDir==null && args.containsKey("-dir")){
+            try{
+                demoDir = new Directory(args.get("-dir"));
+                if (!demoDir.exists()) throw new Exception();
+            }
+            catch(Exception e){
+                System.out.println("Invalid -dir value. Given \"" + args.get("-dir") + "\"");
+                return;
+            }
+        }
+
+        if (demoDir==null){
+            System.out.println("Please provide a valid -demo or -dir");
+            return;
+        }
+
         React.start(demoDir, args);
     }
 
@@ -151,7 +183,7 @@ public class Main {
             System.out.println("Unknown/unsupported -demo value. Given \"" + demo + "\"");
         }
     }
-    
+
 
   //**************************************************************************
   //** getDemoDir

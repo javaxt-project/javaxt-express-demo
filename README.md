@@ -33,9 +33,15 @@ CRUD operations and persistance.
  java -jar dist/express-demo.jar -start webservices -demo CarSales
 ```
 
-### React Demo
-The following command is used to host a ReactJS app. This demo supports ReactJS
-apps with page routing. Simply provide the path to your ReactJS build.
+### React Demos
+The following command is used to start a web server with a ReactJS app. This
+demo illustrates how javaxt-express supports ReactJS "routing" with virtual
+URLs and push/pop state listeners.
+```
+java -jar dist/express-demo.jar -start React -demo Routing
+```
+You can host any ReactJS app by simply providing a path to your ReactJS build
+like this:
 ```
 java -jar dist/express-demo.jar -start React -dir /path/to/build
 ```
